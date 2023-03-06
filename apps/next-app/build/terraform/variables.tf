@@ -22,3 +22,36 @@ variable "dns_zone" {
 variable "dns_zone_rg" {
   type = string
 }
+
+variable "minimum_tls_version" {
+  type    = string
+  default = "1.2"
+}
+
+variable "redis_capacity" {
+  type    = string
+  default = "1"
+}
+
+variable "redis_family" {
+  type    = string
+  default = "C"
+}
+
+variable "redis_name" {
+  type = string
+}
+
+variable "redis_resource_group_name" {
+  type = string
+}
+
+
+variable "redis_resource_group_location" {
+  type = string
+}
+
+variable "redis_sku_name" {
+  type    = string
+  default = "Standard"
+}

@@ -155,7 +155,7 @@
       "options": {
         "commands": [
           {
-            "command": "helm upgrade --devel --create-namespace --install next-app oci://amidostacksnonprodeuwcore.azurecr.io/helm/next-app -n core --atomic --wait --kube-context amido-stacks-nonprod-euw-core-admin --set serviceAccount.annotations.\"azure\\.workload\\.identity/client-id\"=\"{args.clientid}\" --set serviceAccount.annotations.\"azure\\.workload\\.identity/tenant-id\"=\"{args.tenantid}\"",
+            "command": "helm upgrade --devel --create-namespace --install next-app oci://amidostacksnonprodeuwcore.azurecr.io/helm/next-app -n core --atomic --wait --kube-context amido-stacks-nonprod-euw-core-admin --set serviceAccount.annotations.\"azure\\.workload\\.identity/client-id\"=\"{args.clientid}\" --set serviceAccount.annotations.\"azure\\.workload\\.identity/tenant-id\"=\"{args.tenantid}\" --set nextAuthSecret=\\\"$NEXTAUTH_SECRET\\\"",
             "forwardAllArgs": false
           }
         ],
@@ -165,7 +165,7 @@
         "prod": {
           "commands": [
             {
-              "command": "helm upgrade --create-namespace --install --values ../helm/values-prod.yaml next-app oci://amidostacksprodeuwcore.azurecr.io/helm/next-app -n core --atomic --wait --kube-context amido-stacks-prod-euw-core-admin --set serviceAccount.annotations.\"azure\\.workload\\.identity/client-id\"=\"{args.clientid}\" --set serviceAccount.annotations.\"azure\\.workload\\.identity/tenant-id\"=\"{args.tenantid}\"",
+              "command": "helm upgrade --create-namespace --install --values ../helm/values-prod.yaml next-app oci://amidostacksprodeuwcore.azurecr.io/helm/next-app -n core --atomic --wait --kube-context amido-stacks-prod-euw-core-admin --set serviceAccount.annotations.\"azure\\.workload\\.identity/client-id\"=\"{args.clientid}\" --set serviceAccount.annotations.\"azure\\.workload\\.identity/tenant-id\"=\"{args.tenantid}\" --set nextAuthSecret=\\\"$NEXTAUTH_SECRET\\\"",
               "forwardAllArgs": false
             }
           ]

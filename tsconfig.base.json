@@ -18,7 +18,9 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@infra-analysis/next-auth-redis": ["libs/next-auth-redis/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
