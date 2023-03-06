@@ -11,6 +11,15 @@ const config: PlaywrightTestConfig = {
   },
   projects: [
     {
+      // Applitools project specifically for visual regression
+      // This prevents all other projects from unnecessarily repeating applitools tests
+      // Retries disabled to prevent unnecessarily repeating a test within applitools following a visual regression
+      name: 'applitools',
+      grep: /.*@visual-regression/,
+      grepInvert: null,
+      retries: 0,
+    },
+    {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
@@ -44,6 +53,7 @@ const config: PlaywrightTestConfig = {
       },
     },
   ],
+  grepInvert: /.*@visual-regression/,
 };
 
 export default config;

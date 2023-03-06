@@ -51,6 +51,7 @@ stages:
             displayName: build_deployment_${{ parameters.environment }}
             env:
               GH_TOKEN: $(GH_TOKEN)
+              APPLITOOLS_API_KEY: $(APPLITOOLS_API_KEY)
             inputs:
               azureSubscription: ${{ parameters.azureSubscription }}
               scriptLocation: inlineScript
