@@ -1,14 +1,15 @@
 import:
   - ./build/taskctl/contexts.yaml
   - ./build/taskctl/tasks.yaml
-
 pipelines:
   dev:
     - task: lint
     - task: build
       depends_on: lint
-    - task: version
+    - task: e2e:ci
       depends_on: build
+    - task: version
+      depends_on: e2e:ci
     - task: terraform
       depends_on: version
     - task: helm
@@ -17,16 +18,20 @@ pipelines:
     - task: lint
     - task: build
       depends_on: lint
-    - task: version
+    - task: e2e:ci
       depends_on: build
+    - task: version
+      depends_on: e2e:ci
   nonprod:
     - task: lint:ci
     - task: build:ci
       depends_on: lint:ci
     - task: test:ci
       depends_on: build:ci
-    - task: version:nonprod
+    - task: e2e:ci
       depends_on: test:ci
+    - task: version:nonprod
+      depends_on: e2e:ci
     - task: terraform:nonprod
       depends_on: version:nonprod
     - task: helm:nonprod
@@ -35,8 +40,10 @@ pipelines:
     - task: build:ci
     - task: test:ci
       depends_on: build:ci
-    - task: version:prod
+    - task: e2e:ci
       depends_on: test:ci
+    - task: version:prod
+      depends_on: e2e:ci
     - task: terraform:prod
       depends_on: version:prod
     - task: helm:prod
