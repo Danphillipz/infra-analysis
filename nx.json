@@ -33,11 +33,30 @@
     "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
   },
   "stacks": {
+    "business": {
+      "company": "amido",
+      "domain": "stacks",
+      "component": "core"
+    },
+    "domain": {
+      "internal": "nonprod.amidostacks.com",
+      "external": "prod.amidostacks.com"
+    },
     "cloud": {
       "platform": "azure",
-      "region": "euw"
+      "region": "euw",
+      "group": "amido-stacks-nonprod-euw-core"
     },
-    "pipeline": "azdo"
+    "pipeline": "azdo",
+    "terraform": {
+      "group": "Stacks-Ancillary-Resources",
+      "storage": "amidostackstfstate",
+      "container": "tfstate"
+    },
+    "vcs": {
+      "type": "github",
+      "url": "https://github.com/amido/e2e-nx-app-test.git"
+    }
   },
   "generators": {
     "@nrwl/react": {
@@ -49,6 +68,11 @@
       "application": {
         "style": "css",
         "linter": "eslint"
+      }
+    },
+    "@ensono-stacks/workspace": {
+      "init": {
+        "pipelineRunner": "taskctl"
       }
     }
   }
